@@ -1,0 +1,41 @@
+<section *ngIf="project" style="max-width: 900px; margin: 0 auto; padding: 20px;">
+    <h1 style="color: #1976d2; margin-bottom: 10px;">{{ project.title }}</h1>
+    <p style="color: #666; margin-bottom: 20px;">{{ project.description }}</p>
+  
+    <div style="margin-bottom: 20px;">
+      <img [src]="'https://localhost:44383/'+project.imageCover" alt="cover" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+    </div>
+  
+    <h3 style="margin-top: 30px; border-left: 5px solid #1976d2; padding-left: 10px;">Project Tour</h3>
+  
+    <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px;">
+      <div *ngFor="let img of project.images" style="position: relative;">
+        <img [src]="'https://localhost:44383/'+img.imageUrl" alt="tour image"
+             style="width: 200px; height: 150px; border-radius: 8px; object-fit: cover;">
+      </div>
+    </div>
+  
+    <div *ngIf="project.demoLink" style="margin-top: 20px;">
+      <a [href]="project.demoLink" target="_blank"
+         style="background-color: #1976d2; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+         Visit Demo ↗
+      </a>
+    </div>
+  </section>
+  
+  <div *ngIf="!project && !isLoading" style="text-align:center; margin-top: 50px; color: #777;">
+    Project not found.
+  </div>
+  
+  <div *ngIf="isLoading" style="text-align:center; margin-top: 50px;">
+    <div class="spinner" style="display: flex; justify-content: center; align-items: center; height: 60px;">
+      <div style="border: 6px solid #f3f3f3; border-top: 6px solid #1976d2; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
+    </div>
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg);}
+        100% { transform: rotate(360deg);}
+      }
+    </style>
+  </div>
+  
