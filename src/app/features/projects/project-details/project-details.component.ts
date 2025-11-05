@@ -13,7 +13,9 @@ import { ProjectService } from '../../../core/services/project.service';
 export class ProjectDetailsComponent implements OnInit {
 
   project: any;
-  isLoading = false;
+  isLoading = false;  
+  previewImage: string | null = null;
+
 
   constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
 
@@ -37,4 +39,37 @@ export class ProjectDetailsComponent implements OnInit {
       }
     });
   }
+
+openPreview(imageUrl: string) {
+  this.previewImage = imageUrl;
+}
+
+closePreview() {
+  this.previewImage = null;
+}
+hoverIn(event: any) {
+  event.currentTarget.style.transform = 'scale(1.03)';
+  event.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.3)';
+}
+
+hoverOut(event: any) {
+  event.currentTarget.style.transform = 'scale(1)';
+  event.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+}
+
+zoomIn(event: any) {
+  event.currentTarget.style.transform = 'scale(1.05)';
+}
+
+zoomOut(event: any) {
+  event.currentTarget.style.transform = 'scale(1)';
+}
+
+onHover(event: any) {
+  event.target.style.backgroundColor = '#0f5bb5';
+}
+
+onLeave(event: any) {
+  event.target.style.backgroundColor = '#1976d2';
+}
 }

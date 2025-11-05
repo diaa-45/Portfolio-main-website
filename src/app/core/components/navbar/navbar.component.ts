@@ -9,4 +9,9 @@ import { RouterModule } from '@angular/router';
 })
 export class NavbarComponent {
 
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }
