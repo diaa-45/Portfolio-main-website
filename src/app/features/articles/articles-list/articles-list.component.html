@@ -1,1 +1,22 @@
-<p>articles-list works!</p>
+<div *ngIf="!isLoading; else spinner" class="articles-container">
+    <h2 class="page-title">Articles</h2>
+  
+    <div class="articles-grid">
+      <div class="article-card" *ngFor="let article of articles" (click)="openDetails(article.id)">
+        <img [src]="article.mainImage ? 'https://localhost:44383'+article.mainImage: 'defualt-article.png'" alt="Article cover" />
+        <div class="card-content">
+          <h3>{{ article.title }}</h3>
+          <p class="meta">By: <strong>{{ article.author }}</strong></p>
+          <p class="meta">{{ article.date | date:'mediumDate' }}</p>
+          <p class="excerpt">
+            {{ article.content | slice:0:100 }}...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #spinner>
+    <div class="spinner">Loading articles...</div>
+  </ng-template>
+  

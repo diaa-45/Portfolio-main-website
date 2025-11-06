@@ -1,1 +1,18 @@
-<p>article-details works!</p>
+<div *ngIf="!isLoading && article; else spinner" class="article-container" [dir]="direction">
+    <img class="cover-image" [src]="article.thumbImage?'https://localhost:44383/'+article.thumbImage:'defualt-article.png'" alt="Article Cover" />
+  
+    <div class="content">
+      <h1 class="title">{{ article.title }}</h1>
+      <p class="meta">
+        By <strong>{{ article.author }}</strong> • 
+        <span>{{ article.date | date:'mediumDate' }}</span>
+      </p>
+  
+      <div class="article-body" [innerHTML]="article.content"></div>
+    </div>
+  </div>
+  
+  <ng-template #spinner>
+    <div class="spinner">Loading article...</div>
+  </ng-template>
+  
