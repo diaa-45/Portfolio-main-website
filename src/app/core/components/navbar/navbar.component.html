@@ -1,5 +1,6 @@
-<nav class="navbar">
-  <div class="logo">
+<!-- navbar.component.html -->
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="logo" routerLink="/">
     <img src="logo.jpg" alt="Diaa Mohamed Logo" class="logo-img" />
     <span class="logo-text">Diaa Mohamed</span>
   </div>
@@ -13,7 +14,9 @@
     <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
   </ul>
 
-  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  <button class="menu-toggle" (click)="toggleMenu()" [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'">
+    {{ menuOpen ? '✕' : '☰' }}
+  </button>
 </nav>
 
 <!-- Mobile Menu -->

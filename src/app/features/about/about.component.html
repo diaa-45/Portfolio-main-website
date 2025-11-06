@@ -1,1 +1,70 @@
-<p>about works!</p>
+<!-- about.component.html -->
+<div class="about-page" *ngIf="about">
+    <div class="hero" [style.--bg-image]="'url(' + about.openingImage + ')'">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">{{ about.openingText }}</h1>
+        <p class="hero-subtitle">{{ about.title }}</p>
+      </div>
+      <div class="scroll-indicator">
+        <span></span>
+      </div>
+    </div>
+  
+    <div class="content-section">
+      <div class="container">
+        <div class="intro-section">
+          <h2 class="section-title">
+            <span class="title-line"></span>
+            Who I Am
+            <span class="title-line"></span>
+          </h2>
+          <p class="about-description">{{ about.description }}</p>
+        </div>
+  
+        <div class="cards-container">
+          <div class="card mission-card">
+            <div class="card-glow"></div>
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="3"/>
+                <line x1="12" y1="2" x2="12" y2="9"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Mission</h3>
+            <p class="card-text">{{ about.mission }}</p>
+          </div>
+  
+          <div class="card vision-card">
+            <div class="card-glow"></div>
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Vision</h3>
+            <p class="card-text">{{ about.vision }}</p>
+          </div>
+  
+          <div class="card values-card">
+            <div class="card-glow"></div>
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Values</h3>
+            <p class="card-text">{{ about.values }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Loading state -->
+  <div class="loading-container" *ngIf="!about">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+  </div>
