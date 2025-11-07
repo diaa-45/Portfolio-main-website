@@ -6,5 +6,7 @@ export interface About {
     description: string,
     mission: string,
     vision: string,
-    values: string 
+    values: string ,
+    linkedIn:string,
+    gitHub:string
 }
