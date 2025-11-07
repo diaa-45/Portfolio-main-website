@@ -1,1 +1,24 @@
-<p>courses-list works!</p>
+<section class="courses-section">
+    <h2 class="section-title">Available Courses</h2>
+  
+    <div *ngIf="loading" class="spinner-container">
+      <div class="spinner"></div>
+    </div>
+  
+    <div class="courses-container" *ngIf="!loading && courses.length > 0">
+      <div class="course-card" *ngFor="let course of courses" [routerLink]="['/courses', course.id]">
+        <img [src]="course.imageCover ? 'https://localhost:44383/'+course.imageCover :'default.png'" alt="{{course.title}}" class="course-image" />
+        <div class="course-info">
+          <h3>{{ course.title }}</h3>
+          <p>{{ course.description | slice:0:40 }}{{ course.description.length > 40 ? '...' : '' }}</p>
+          <p><strong>Instructor:</strong> {{ course.instructorName }}</p>
+          <a [href]="'https://wa.me/'+course.contactLink" target="_blank" class="contact-btn">
+                Contact Instructor
+           </a>
+        </div>
+      </div>
+    </div>
+  
+    <p *ngIf="!loading && courses.length === 0" class="no-courses">No courses available yet.</p>
+  </section>
+  
