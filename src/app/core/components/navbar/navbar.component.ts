@@ -2,6 +2,8 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { About } from '../../../features/about/about.model';
+import { AboutService } from '../../services/about.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +15,24 @@ import { RouterModule } from '@angular/router';
 export class NavbarComponent {
   menuOpen: boolean = false;
   isScrolled: boolean = false;
-
+  about: About| null =null;
+  
+  constructor(private aboutService: AboutService) {}
+  
+  ngOnInit(): void {
+    this.loadAboutData();
+  }
+  
+  loadAboutData(): void {
+    this.aboutService.getAll().subscribe({
+      next: (res) => {
+        this.about = res;
+      },
+      error: (err) => {
+        console.error('Error loading about data:', err);
+      }
+    });
+  }
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
     

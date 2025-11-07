@@ -1,17 +1,17 @@
 <!-- navbar.component.html -->
 <nav class="navbar" [class.scrolled]="isScrolled">
   <div class="logo" routerLink="/">
-    <img src="logo.jpg" alt="Diaa Mohamed Logo" class="logo-img" />
+    <img [src]="about?.openingImage?'https://localhost:44383/'+ about?.openingImage:'logo.jpj'" alt="Diaa Mohamed Logo" class="logo-img" />
     <span class="logo-text">Diaa Mohamed</span>
   </div>
 
   <ul class="nav-links">
-    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
     <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-    <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
     <li><a routerLink="/articles" routerLinkActive="active">Articles</a></li>
     <li><a routerLink="/courses" routerLinkActive="active">Courses</a></li>
-    <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+    <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
+    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
   </ul>
 
   <button class="menu-toggle" (click)="toggleMenu()" [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'">
